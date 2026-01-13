@@ -81,6 +81,19 @@ export default {
           busy: "rgb(239 68 68)",
           offline: "rgb(156 163 175)",
         },
+        electric: {
+          DEFAULT: "hsl(var(--electric-blue) / <alpha-value>)",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success) / <alpha-value>)",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning) / <alpha-value>)",
+        },
+        terminal: {
+          DEFAULT: "hsl(var(--terminal-bg) / <alpha-value>)",
+          border: "hsl(var(--terminal-border) / <alpha-value>)",
+        },
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
