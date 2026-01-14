@@ -84,6 +84,9 @@ export default {
         electric: {
           DEFAULT: "hsl(var(--electric-blue) / <alpha-value>)",
         },
+        cyan: {
+          DEFAULT: "hsl(var(--neon-cyan) / <alpha-value>)",
+        },
         success: {
           DEFAULT: "hsl(var(--success) / <alpha-value>)",
         },
