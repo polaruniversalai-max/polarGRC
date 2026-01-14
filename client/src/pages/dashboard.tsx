@@ -2,7 +2,8 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import { Wallet, Shield, Activity, Network, CheckCircle2, AlertTriangle, Clock, Zap, Terminal, TrendingUp, Lock, Unlock } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { Wallet, Shield, Activity, Network, CheckCircle2, AlertTriangle, Clock, Zap, Terminal, TrendingUp, Lock, Unlock, Award, FileCheck } from "lucide-react";
 
 type LogEntryType = "audit" | "payment_required" | "payment_processing" | "payment_complete" | "access_granted" | "checkpoint" | "verification";
 
@@ -333,6 +334,7 @@ export default function Dashboard() {
   const [isPaymentSequence, setIsPaymentSequence] = useState(false);
   const logContainerRef = useRef<HTMLDivElement>(null);
   const sequenceStep = useRef(0);
+  const { toast } = useToast();
 
   const scrollToBottom = useCallback(() => {
     if (logContainerRef.current) {
@@ -397,11 +399,17 @@ export default function Dashboard() {
           )
         );
         setComplianceScore((prev) => Math.min(100, prev + Math.random() * 2));
+        
+        toast({
+          title: "x402 Payment Authorized",
+          description: "Payment of 0.001 MOVE authorized via x402 protocol",
+          duration: 5000,
+        });
       }
     };
 
     runStep();
-  }, [addLog]);
+  }, [addLog, toast]);
 
   const generateAuditEntry = useCallback(() => {
     if (isPaymentSequence) return;
@@ -534,6 +542,10 @@ export default function Dashboard() {
             <Badge variant="outline" className="text-xs border-electric text-electric" data-testid="badge-live-status">
               <StatusIndicator status="online" pulse />
               <span className="ml-1.5">Live</span>
+            </Badge>
+            <Badge className="text-xs bg-success/20 text-success border border-success/30 gap-1.5" data-testid="badge-proof-of-compliance">
+              <Award className="w-3 h-3" />
+              Proof of Compliance
             </Badge>
           </div>
           <WalletButton 
