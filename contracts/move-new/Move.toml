@@ -1,0 +1,11 @@
+[package]
+name = "PolarGRCIdentity"
+version = "1.0.0"
+authors = ["PolarUniversal Team"]
+
+[addresses]
+polar_universal = "0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43"
+
+[dependencies]
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework", rev = "aptos-node-v1.9.3" }
+AptosStdlib = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-stdlib", rev = "aptos-node-v1.9.3" }

@@ -1,0 +1,90 @@
+{
+  "deployments": [
+    {
+      "network": "movement_m2_testnet",
+      "networkName": "Movement M2 Testnet",
+      "contractName": "PolarIdentity + PolarToken (Move)",
+      "address": "0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "txHash": "0xacb290488df08a279e6441184a2b64443a2641fdd32721d4885e2570794a89cf",
+      "deployer": "0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "timestamp": "2026-01-28T00:00:00.000Z",
+      "explorerUrl": "https://explorer.testnet.movementnetwork.xyz/account/0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "status": "success"
+    },
+    {
+      "network": "movement_m2_mainnet",
+      "networkName": "Movement M2 Mainnet",
+      "contractName": "PolarIdentity + PolarToken (Move)",
+      "address": "0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "txHash": "0xe5ae3c22803755fbbeaee65269b0dde7b9e150e6ae003b647937ab9040c2e81d",
+      "deployer": "0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "timestamp": "2026-01-28T00:00:00.000Z",
+      "explorerUrl": "https://explorer.movementnetwork.xyz/account/0x8b31510c61d4f6f04abb100093eb9a79f2edd0fe6df15424eab4ed0721872c43",
+      "status": "success"
+    },
+    {
+      "network": "sepolia",
+      "networkName": "Ethereum Sepolia",
+      "contractName": "PolarUniversalGRC_V3",
+      "address": "0x385C1691409254d58D64f66292c52CeE4D89fC62",
+      "txHash": "0x4df9dd6340c593e81cb662df687c7dccb85cb8d8a7c60d7fddb89a42c76bbdd8",
+      "deployer": "0x9d91fC37529BD0c6D020dFf6519ee699C7e0A783",
+      "timestamp": "2026-01-29T07:52:31.631Z",
+      "explorerUrl": "https://sepolia.etherscan.io/address/0x385C1691409254d58D64f66292c52CeE4D89fC62",
+      "status": "success"
+    },
+    {
+      "network": "monad",
+      "networkName": "Monad Testnet",
+      "contractName": "PolarUniversalGRC_V3",
+      "address": "0xcC76dC38e6ae135154eFC234B24Bafd5740BaBbf",
+      "txHash": "0xcd6f3e4dca5efba3a9cade61aedff46b04527c8e5d6e7c8b76b0475a8ee71bef",
+      "deployer": "0x9d91fC37529BD0c6D020dFf6519ee699C7e0A783",
+      "timestamp": "2026-01-29T07:52:42.848Z",
+      "explorerUrl": "https://testnet.monadexplorer.com/address/0xcC76dC38e6ae135154eFC234B24Bafd5740BaBbf",
+      "status": "success"
+    },
+    {
+      "network": "story",
+      "networkName": "Story Aeneid",
+      "contractName": "PolarUniversalGRC_V3",
+      "address": "0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "txHash": "0x0ee900a7d53a2844d4e19b9089f547f149e3763f15b47ac2005fda538db2612e",
+      "deployer": "0x9d91fC37529BD0c6D020dFf6519ee699C7e0A783",
+      "timestamp": "2026-01-29T07:52:50.359Z",
+      "explorerUrl": "https://aeneid.storyscan.xyz/address/0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "status": "success"
+    },
+    {
+      "network": "abstract",
+      "networkName": "Abstract Testnet",
+      "contractName": "PolarUniversalGRC_V3",
+      "address": "0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "txHash": "0xd3efe0fa48bb6108e8d6f8aa03a9d6af81661571935690e2c0ccd4b6097f9aa5",
+      "deployer": "0x9d91fC37529BD0c6D020dFf6519ee699C7e0A783",
+      "timestamp": "2026-01-29T07:52:54.836Z",
+      "explorerUrl": "https://explorer.testnet.abs.xyz/address/0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "status": "success"
+    },
+    {
+      "network": "berachain",
+      "networkName": "Berachain Bepolia",
+      "contractName": "PolarUniversalGRC_V3",
+      "address": "0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "txHash": "0x0246beae76bf5c375baf57dc533ab7813c0cb5bdb61fcfd80b4988b591779d44",
+      "deployer": "0x9d91fC37529BD0c6D020dFf6519ee699C7e0A783",
+      "timestamp": "2026-01-29T07:53:10.283Z",
+      "explorerUrl": "https://bepolia.beratrail.io/address/0xd53AbC2553CFCAB9b75814d24647C6651Cf028f4",
+      "status": "success"
+    },
+    {
+      "network": "hyperliquid",
+      "networkName": "Hyperliquid Testnet",
+      "contractName": "PolarUniversalGRC_V3",
+      "error": "No balance on hyperliquid. Get testnet tokens first.",
+      "timestamp": "2026-01-29T07:53:14.127Z",
+      "status": "failed"
+    }
+  ],
+  "lastUpdated": "2026-01-29T07:53:14.128Z"
+}

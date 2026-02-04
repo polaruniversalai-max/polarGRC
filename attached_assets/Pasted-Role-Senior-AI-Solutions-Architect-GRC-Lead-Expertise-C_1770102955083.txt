@@ -1,0 +1,55 @@
+Role: Senior AI Solutions Architect & GRC Lead (Expertise: CDSCO/FDA Regulatory Frameworks).
+
+Objective: Implement "Sentinel OS," a budget-conscious, production-grade AI GRC orchestrator tailored for the IndiaAI Innovation Challenge and Biopharma SHAKTI initiative.
+
+1. OOP System Architecture & Core Logic:
+
+SentinelOrchestrator Class (backend/core.js): The central hub. It must coordinate between the AI engine, the document processor, and the dashboard.
+
+CDSCOEngine Class (backend/pharma.js): Implement the January 2026 NDCT Amendment Rules.
+
+Logic Gate: Create a function evaluateTrialType(drugProfile). If the profile contains high-risk keywords (Cytotoxic, Narcotic, Psychotropic), flag for "Mandatory 45-Day Test License." Otherwise, trigger the "Prior-Intimation Mechanism" (0-day start).
+
+Regulatory Exemption: Include a check for generic injectables; if excipients match the reference exactly, waive the "Animal Toxicity Study" requirement as per the Jan 28, 2026, notification.
+
+Vault Class (backend/security.js): Implement a PII-masking layer. Ensure no patient-identifiable data is sent to the LLM; only anonymized metadata for compliance reasoning.
+
+2. AI & Document Integration (Cost-Optimized):
+
+Model: Use gemini-3-flash-preview for all reasoning.
+
+Cost Strategy: * Use thinking_level: "low" for UI and basic sorting.
+
+Use thinking_level: "high" only for the conductRegulatoryAudit() method.
+
+Context Caching: Force the agent to implement caching for the NDCT 2026 PDF (200+ pages) to avoid redundant token costs.
+
+Foxit SDK: Use @foxitsoftware/foxit-pdf-sdk-node to extract "Structured Intent" from clinical trial protocols.
+
+3. Frontend (Generative UI & Sovereign Dashboard):
+
+Stack: React (Tailwind CSS) + Vite.
+
+Features:
+
+SHAKTI Compliance Tracker: A real-time countdown showing the 45-day CDSCO approval window for high-risk drugs.
+
+Sovereign Node Status: A visual indicator showing that data is being processed on an "Indian Sovereign Node" (mocked).
+
+Miro Visualization: Integrate the Miro SDK to render a live "Compliance Flowchart" that updates as the agent reasons through the NDCT rules.
+
+4. DevOps & Multi-Repo Sync:
+
+Environment: Ensure all keys (GEMINI_API_KEY, SANITY_PROJECT_ID, etc.) are pulled from process.env.
+
+Git Sync: Configure a script to sync to:
+
+origin (Private): The full production-grade codebase.
+
+public (GitHub/polarGRC): A "Safe-for-Judges" version with all .env files and internal IP scrubbed.
+
+5. Deliverable:
+
+A "Run" command that boots both the Express backend and the React frontend concurrently.
+
+A README.md explaining how the code meets the IndiaAI Innovation Challenge Stage 1 technical requirements for MSME Governance.

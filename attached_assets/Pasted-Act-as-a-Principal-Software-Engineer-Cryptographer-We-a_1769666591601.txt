@@ -1,0 +1,30 @@
+Act as a Principal Software Engineer & Cryptographer. We are building the "Hard Engineering" core for PolarUniversal Systems LLC. 
+
+DO NOT build a wrapper. Build a functional "Confidential GRC Engine" that integrates specific hardware and cryptographic protocols for NIH and IBM compliance. 
+
+### Core Modules to Implement (OOPS / Production-Grade):
+
+1. **The OIPK Privacy Layer (`/enterprise_core/compliance/oipk_engine.py`):**
+   - Implement a `ZKProofGenerator` class. 
+   - Instead of a dummy, write logic that takes a structured 'Pharma_Trial_Log' and uses a Zero-Knowledge Identity Prover (OIPK) pattern to generate a proof of "Valid Age & Dosage" without revealing PII. 
+   - Use mock cryptographic signing to simulate the Movement Labs OIPK protocol.
+
+2. **The IBM Trusted Execution Logic (`/enterprise_core/security/ibm_trusted_exec.py`):**
+   - Create an `EncryptedEnclaveManager` class. 
+   - Implement a "Keep Your Own Key" (KYOK) handshake protocol. 
+   - Write a `validate_container_integrity()` method that checks if the runtime environment matches IBM Hyper Protect's Secure Service Container (SSC) specifications.
+
+3. **The Gemini Multimodal Pipeline (`/enterprise_core/ai/vertex_pipeline.py`):**
+   - Build a `DocumentIntelligence` class. 
+   - Instead of a simple chat call, implement an "Asynchronous Extraction" logic that uses Gemini to map unstructured PDF text directly into a 'Regulatory_State_Machine' that tracks FDA 21 CFR Part 11 status.
+
+4. **The Antigravity High-Availability Hook (`/enterprise_core/network/sequencer.py`):**
+   - Implement a `DecentralizedSequencerClient` that interacts with the Antigravity protocol.
+   - Include logic for "Transaction Batching" and "Finality Verification" to prove that GRC logs are immutable.
+
+### Engineering Requirements:
+- Use Abstract Base Classes (ABCs) for modularity.
+- Implement robust Error Handling (custom exceptions for `ComplianceViolation` or `HardwareMismatch`).
+- Create a `scripts/run_audit_simulation.py` that executes a full end-to-end flow: Scans a document -> Masks PHI via OIPK -> Stores in IBM Vault -> Batches to Antigravity.
+
+Execute this in one pass. The code must be high-complexity to withstand a technical audit by IBM and Movement Labs judges.
