@@ -50,7 +50,6 @@ rm -rf .local 2>/dev/null || true
 rm -rf .upm 2>/dev/null || true
 rm -rf dist 2>/dev/null || true
 rm -rf secrets 2>/dev/null || true
-rm -rf sentinel-vault 2>/dev/null || true
 rm -rf __pycache__ 2>/dev/null || true
 rm -f .env .env.local .env.development .env.production 2>/dev/null || true
 rm -f .replit replit.nix replit.md 2>/dev/null || true
@@ -58,6 +57,21 @@ rm -f .gitignore 2>/dev/null || true
 rm -f package-lock.json 2>/dev/null || true
 rm -f *.log 2>/dev/null || true
 rm -rf .temp* 2>/dev/null || true
+
+# ===========================================
+# PROPRIETARY IP EXCLUSION (Core trade secrets)
+# ===========================================
+rm -rf sentinel-vault 2>/dev/null || true
+rm -rf contracts/solidity 2>/dev/null || true
+rm -rf contracts/move 2>/dev/null || true
+rm -rf contracts/core 2>/dev/null || true
+rm -rf contracts/adapters 2>/dev/null || true
+rm -rf server/services/owasp-sc-hardening.ts 2>/dev/null || true
+rm -rf server/services/movement_service.ts 2>/dev/null || true
+rm -rf server/services/route-orchestrator-service.ts 2>/dev/null || true
+rm -rf shared/logic/routeController.ts 2>/dev/null || true
+rm -rf shared/logic/complianceAgent.ts 2>/dev/null || true
+rm -rf server/middleware/security.ts 2>/dev/null || true
 
 # Remove any __pycache__ nested
 find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
@@ -110,13 +124,16 @@ echo -e "${YELLOW}[5/6] Initializing fresh git repo...${NC}"
 git init -q
 git checkout -b main 2>/dev/null || true
 git add -A
-git commit -q -m "Sentinel OS v1.2 - Agentic GRC Platform (Production Release)
+git commit -q -m "Sentinel OS v1.2 - Global Compliance Operating System (Production Release)
 
 Triple-Zero Architecture: Zero-Downtime, Zero-Knowledge, Zero-Trust
-- 5-Sector Compliance Engine (Pharma, Banking, Healthcare, AI, Privacy)
+- OWASP Smart Contract Top 10 (2026) Hardened: 10 active security guards
+- Route Orchestrator: 3 strategies (INSTITUTIONAL/PRO_AUDIT/ECONOMY) across 14 network nodes
+- Industry Chains: Pharma (Akiri/DokChain/Medicalchain), Banking (QNT/Ondo/Ripple), Research
+- 5-Sector Compliance Engine (Healthcare, AI Agents, DePIN, Payments, Privacy)
+- Multi-chain settlement: Movement M1 + Celestia + Stacks + ICP failover
+- PII Vault with 15+ masking patterns (HIPAA/DPDP/GDPR)
 - NDCT 2026 Amendment compliant with Prior-Intimation mechanism
-- PII Vault with 15+ masking patterns
-- Movement Network (M1) integration ready
 
 Hackathon: DeveloperWeek 2026 + IndiaAI SHAKTI Initiative"
 
@@ -141,9 +158,17 @@ echo ""
 echo -e "  Public repo now contains ONLY safe files."
 echo -e "  Old history completely replaced."
 echo ""
-echo -e "  ${RED}Excluded from public:${NC}"
-echo -e "    ✗ .env* / secrets/ / .replit"
-echo -e "    ✗ sentinel-vault/ (proprietary)"
+echo -e "  ${RED}Excluded from public (IP protected):${NC}"
+echo -e "    ✗ sentinel-vault/ (proprietary compliance engine)"
+echo -e "    ✗ contracts/solidity/ (smart contract IP)"
+echo -e "    ✗ contracts/move/ (Move contract IP)"
+echo -e "    ✗ contracts/core/ (registry IP)"
+echo -e "    ✗ server/services/owasp-sc-hardening.ts"
+echo -e "    ✗ server/services/movement_service.ts"
+echo -e "    ✗ server/services/route-orchestrator-service.ts"
+echo -e "    ✗ shared/logic/routeController.ts"
+echo -e "    ✗ shared/logic/complianceAgent.ts"
+echo -e "    ✗ server/middleware/security.ts"
+echo -e "    ✗ .env* / secrets/ / .replit / replit.*"
 echo -e "    ✗ node_modules/ / dist/ / .cache/"
-echo -e "    ✗ .config/ / .local/ / replit.*"
 echo ""

@@ -1,5 +1,5 @@
-// Vault Class - PII Masking Layer for LLM Processing
-// Ensures no patient-identifiable data is sent to AI models
+import crypto from "crypto";
+
 
 interface PIIMaskingResult {
   maskedData: string;
@@ -229,13 +229,7 @@ export class Vault {
   }
 
   private hashString(str: string): string {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = (hash << 5) - hash + char;
-      hash = hash & hash;
-    }
-    return Math.abs(hash).toString(16).padStart(8, "0");
+    return crypto.createHash("sha256").update(str).digest("hex").substring(0, 16);
   }
 
   public getStats(): {

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Pill, Archive, Shield, Building2, Wallet, BarChart3, Bell, LogOut, User, Settings, Coins, Trophy, Brain } from "lucide-react";
+import { Pill, Archive, Shield, Building2, Wallet, BarChart3, Bell, LogOut, User, Settings, Coins, Trophy, Brain, Microscope, ChevronDown } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -16,24 +16,31 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { useState } from "react";
 
-const mainMenuItems = [
+const coreMenuItems = [
   {
-    title: "Pharma Sovereign Hub",
+    title: "Pharma Hub",
     url: "/",
     icon: Pill,
     badge: "LIVE",
   },
   {
-    title: "Sentinel OS Auditor",
+    title: "Sentinel Auditor",
     url: "/sentinel",
     icon: Brain,
     badge: "AI",
   },
   {
-    title: "Account Dashboard",
-    url: "/account",
-    icon: User,
+    title: "Clinical Engine",
+    url: "/clinical",
+    icon: Microscope,
+    badge: "NDCT",
   },
   {
     title: "ROI Analytics",
@@ -41,13 +48,13 @@ const mainMenuItems = [
     icon: BarChart3,
   },
   {
-    title: "Alert Center",
+    title: "Alerts",
     url: "/alerts",
     icon: Bell,
   },
 ];
 
-const settingsMenuItems = [
+const financeMenuItems = [
   {
     title: "Wallet",
     url: "/wallet",
@@ -64,13 +71,21 @@ const settingsMenuItems = [
     url: "/leaderboard",
     icon: Trophy,
   },
+];
+
+const systemMenuItems = [
+  {
+    title: "Account",
+    url: "/account",
+    icon: User,
+  },
   {
     title: "Organization",
     url: "/organization",
     icon: Building2,
   },
   {
-    title: "Admin Treasury",
+    title: "Admin",
     url: "/admin",
     icon: Settings,
     badge: "ADMIN",
@@ -82,42 +97,35 @@ const settingsMenuItems = [
   },
 ];
 
-export function AppSidebar() {
-  const [location] = useLocation();
-  const { user, logout, isLoggingOut } = useAuth();
+interface MenuSectionProps {
+  label: string;
+  items: typeof coreMenuItems;
+  location: string;
+  defaultOpen?: boolean;
+}
 
-  const userInitials = user?.firstName && user?.lastName
-    ? `${user.firstName[0]}${user.lastName[0]}`
-    : user?.email?.[0]?.toUpperCase() || "U";
+function MenuSection({ label, items, location, defaultOpen = true }: MenuSectionProps) {
+  const [open, setOpen] = useState(defaultOpen);
+  const hasActiveItem = items.some(item => item.url === location);
 
   return (
-    <Sidebar>
-      <SidebarHeader className="p-4">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[hsl(var(--electric-cyan))] to-[hsl(var(--neon-green))] flex items-center justify-center">
-            <Shield className="w-5 h-5 text-[hsl(var(--sovereign-blue))]" />
-          </div>
-          <div>
-            <span className="text-base font-black text-[hsl(var(--electric-cyan))] uppercase tracking-tight block">
-              POLAR COMMAND
-            </span>
-            <span className="text-[10px] font-mono text-sidebar-foreground/60 block">
-              PolarUniversal Sovereign Systems
-            </span>
-          </div>
-        </div>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Operations</SidebarGroupLabel>
+    <Collapsible open={open || hasActiveItem} onOpenChange={setOpen}>
+      <SidebarGroup className="py-0">
+        <CollapsibleTrigger className="w-full">
+          <SidebarGroupLabel className="flex items-center justify-between cursor-pointer">
+            <span>{label}</span>
+            <ChevronDown className={`w-3 h-3 transition-transform ${open || hasActiveItem ? "rotate-0" : "-rotate-90"}`} />
+          </SidebarGroupLabel>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
           <SidebarGroupContent>
             <SidebarMenu>
-              {mainMenuItems.map((item) => (
+              {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={location === item.url}>
                     <Link href={item.url} data-testid={`nav-${item.title.toLowerCase().replace(/\s/g, "-")}`}>
                       <item.icon className="w-4 h-4" />
-                      <span>{item.title}</span>
+                      <span className="truncate">{item.title}</span>
                       {item.badge && (
                         <Badge className="ml-auto bg-[hsl(var(--electric-cyan))]/20 text-[hsl(var(--electric-cyan))] text-[10px]">
                           {item.badge}
@@ -129,41 +137,54 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
-        </SidebarGroup>
+        </CollapsibleContent>
+      </SidebarGroup>
+    </Collapsible>
+  );
+}
 
-        <SidebarGroup>
-          <SidebarGroupLabel>Settings</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {settingsMenuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={location === item.url}>
-                    <Link href={item.url} data-testid={`nav-${item.title.toLowerCase().replace(/\s/g, "-")}`}>
-                      <item.icon className="w-4 h-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+export function AppSidebar() {
+  const [location] = useLocation();
+  const { user, logout, isLoggingOut } = useAuth();
+
+  const userInitials = user?.firstName && user?.lastName
+    ? `${user.firstName[0]}${user.lastName[0]}`
+    : user?.email?.[0]?.toUpperCase() || "U";
+
+  return (
+    <Sidebar>
+      <SidebarHeader className="p-3">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-md bg-gradient-to-br from-[hsl(var(--electric-cyan))] to-[hsl(var(--neon-green))] flex items-center justify-center flex-shrink-0">
+            <Shield className="w-4 h-4 text-[hsl(var(--sovereign-blue))]" />
+          </div>
+          <div className="min-w-0">
+            <span className="text-sm font-black text-[hsl(var(--electric-cyan))] uppercase tracking-tight block truncate">
+              POLAR COMMAND
+            </span>
+            <span className="text-[9px] font-mono text-sidebar-foreground/50 block truncate">
+              v3.1.0 Sovereign Systems
+            </span>
+          </div>
+        </div>
+      </SidebarHeader>
+      <SidebarContent className="gap-0">
+        <MenuSection label="Core" items={coreMenuItems} location={location} defaultOpen={true} />
+        <MenuSection label="Finance" items={financeMenuItems} location={location} defaultOpen={false} />
+        <MenuSection label="System" items={systemMenuItems} location={location} defaultOpen={false} />
       </SidebarContent>
-      <SidebarFooter className="p-4 space-y-4">
+      <SidebarFooter className="p-2">
         {user && (
-          <div className="flex items-center gap-3 p-2 rounded-lg bg-sidebar-accent/30">
-            <Avatar className="w-8 h-8">
+          <div className="flex items-center gap-2 p-2 rounded-md bg-sidebar-accent/30">
+            <Avatar className="w-7 h-7 flex-shrink-0">
               <AvatarImage src={user.profileImageUrl || undefined} />
-              <AvatarFallback className="bg-[hsl(var(--electric-cyan))]/20 text-[hsl(var(--electric-cyan))] text-xs">
+              <AvatarFallback className="bg-[hsl(var(--electric-cyan))]/20 text-[hsl(var(--electric-cyan))] text-[10px]">
                 {userInitials}
               </AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium truncate">
+              <div className="text-xs font-medium truncate">
                 {user.firstName || user.email?.split("@")[0] || "User"}
-              </div>
-              <div className="text-[10px] text-muted-foreground truncate">
-                {user.email}
               </div>
             </div>
             <Button
@@ -171,19 +192,12 @@ export function AppSidebar() {
               size="icon"
               onClick={() => logout()}
               disabled={isLoggingOut}
-              className="h-8 w-8"
               data-testid="button-logout"
             >
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-3.5 h-3.5" />
             </Button>
           </div>
         )}
-        <div className="text-[10px] font-mono text-sidebar-foreground/50">
-          Movement M1 | Railgun ZK | Gemini AI
-        </div>
-        <div className="text-[10px] font-mono text-sidebar-foreground/40">
-          v3.1.0-WHALE
-        </div>
       </SidebarFooter>
     </Sidebar>
   );

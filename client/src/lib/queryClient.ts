@@ -1,10 +1,21 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
+import { getTenantId } from "@/contexts/tenant-branding";
 
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
     throw new Error(`${res.status}: ${text}`);
   }
+}
+
+function buildHeaders(data?: unknown): Record<string, string> {
+  const headers: Record<string, string> = {
+    "X-Tenant-ID": getTenantId(),
+  };
+  if (data) {
+    headers["Content-Type"] = "application/json";
+  }
+  return headers;
 }
 
 export async function apiRequest(
@@ -14,7 +25,7 @@ export async function apiRequest(
 ): Promise<Response> {
   const res = await fetch(url, {
     method,
-    headers: data ? { "Content-Type": "application/json" } : {},
+    headers: buildHeaders(data),
     body: data ? JSON.stringify(data) : undefined,
     credentials: "include",
   });
@@ -31,6 +42,7 @@ export const getQueryFn: <T>(options: {
   async ({ queryKey }) => {
     const res = await fetch(queryKey.join("/") as string, {
       credentials: "include",
+      headers: { "X-Tenant-ID": getTenantId() },
     });
 
     if (unauthorizedBehavior === "returnNull" && res.status === 401) {

@@ -2,7 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
-import { GlobalErrorHandler } from "./middleware/security";
+import { GlobalErrorHandler, generalRateLimiter, SecurityMiddleware } from "./middleware/security";
 
 const app = express();
 const httpServer = createServer(app);
@@ -15,13 +15,17 @@ declare module "http" {
 
 app.use(
   express.json({
+    limit: "5mb",
     verify: (req, _res, buf) => {
       req.rawBody = buf;
     },
   }),
 );
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false, limit: "1mb" }));
+
+app.use("/api", generalRateLimiter);
+app.use(SecurityMiddleware.zeroTrustHeaders());
 
 export function log(message: string, source = "express") {
   const formattedTime = new Date().toLocaleTimeString("en-US", {

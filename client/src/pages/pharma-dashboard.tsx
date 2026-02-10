@@ -733,35 +733,31 @@ export default function PharmaDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-[hsl(var(--sovereign-blue))] p-4 md:p-6" data-testid="pharma-dashboard">
+    <div className="bg-[hsl(var(--sovereign-blue))] p-6" data-testid="pharma-dashboard">
       <OnboardingTour isUtilitySidebarOpen={utilitySidebarOpen} />
       <HelpDrawer 
         isOpen={helpDrawerOpen} 
         onClose={() => setHelpDrawerOpen(false)} 
         widgetId={activeHelpWidget} 
       />
-      <UtilitySidebar 
-        isOpen={utilitySidebarOpen}
-        onToggle={() => setUtilitySidebarOpen(!utilitySidebarOpen)}
-        onNavigateToWidget={handleNavigateToWidget}
-      />
-      <div className="max-w-7xl mx-auto space-y-4 md:space-y-6">
-        <header className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 md:mb-8">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[hsl(var(--electric-cyan))] to-[hsl(var(--neon-green))] flex items-center justify-center">
-              <Shield className="w-7 h-7 text-[hsl(var(--sovereign-blue))]" />
-            </div>
-            <div>
-              <h1 className="text-xl md:text-2xl font-sans font-black text-[hsl(var(--electric-cyan))] tracking-tight uppercase">
-                POLAR COMMAND
-              </h1>
-              <p className="text-xs md:text-sm font-mono text-muted-foreground">
-                PolarUniversal Sovereign Systems v3.1.0-WHALE
-              </p>
-            </div>
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <div>
+            <h1 className="text-2xl font-bold flex items-center gap-2">
+              <Pill className="w-6 h-6 text-primary" />
+              Pharma Compliance Hub
+            </h1>
+            <p className="text-sm text-muted-foreground">
+              DSCSA 2026 serialization verification & supply chain audit
+            </p>
           </div>
-
-          <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
+          <Badge variant="outline" className="gap-1">
+            <Shield className="w-3 h-3" />
+            Triple-Zero Standard
+          </Badge>
+        </div>
+        <header className="flex flex-col md:flex-row md:items-center gap-3 mb-3">
+          <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3 flex-wrap">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-[hsl(var(--midnight-navy))] rounded-md border border-[hsl(var(--glass-border))]">
               <div className={`w-2 h-2 rounded-full ${isOfflineMode ? "bg-[hsl(var(--warning))]" : "bg-[hsl(var(--neon-green))] animate-pulse"}`} />
               <span className="text-[10px] font-mono text-muted-foreground">
@@ -822,7 +818,7 @@ export default function PharmaDashboard() {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-4">
           <Card id="pharma-hub" className="col-span-1 md:col-span-12 lg:col-span-6 bg-[hsl(var(--midnight-navy))] border-[hsl(var(--glass-border))]" data-testid="card-pharma-hub">
             <CardHeader className="flex flex-row items-center justify-between gap-4 pb-2">
               <div className="flex items-center gap-3">

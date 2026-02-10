@@ -1,11 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Shield, Chrome } from "lucide-react";
+import { Shield, LogIn } from "lucide-react";
 import { SiGoogle } from "react-icons/si";
 
 export default function LoginPage() {
   const handleGoogleLogin = () => {
     window.location.href = "/api/auth/google";
+  };
+
+  const handleReplitLogin = () => {
+    window.location.href = "/api/login";
   };
 
   return (
@@ -29,6 +33,22 @@ export default function LoginPage() {
             Sign in to access your pharmaceutical supply chain compliance dashboard
           </div>
           
+          <Button 
+            onClick={handleReplitLogin}
+            className="w-full h-12"
+            variant="default"
+            data-testid="button-replit-login"
+          >
+            <LogIn className="w-5 h-5 mr-3" />
+            Sign in with Replit
+          </Button>
+
+          <div className="relative flex items-center gap-4">
+            <div className="flex-1 border-t border-[hsl(var(--border))]" />
+            <span className="text-xs text-muted-foreground">or</span>
+            <div className="flex-1 border-t border-[hsl(var(--border))]" />
+          </div>
+
           <Button 
             onClick={handleGoogleLogin}
             className="w-full h-12 bg-white hover:bg-gray-100 text-gray-900 border border-gray-300"

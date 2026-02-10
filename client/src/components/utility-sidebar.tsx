@@ -107,17 +107,7 @@ export function UtilitySidebar({ isOpen, onToggle, onNavigateToWidget }: Utility
   };
 
   if (!isOpen) {
-    return (
-      <Button
-        variant="ghost"
-        size="icon"
-        onClick={onToggle}
-        className="fixed right-4 top-20 z-50 bg-[hsl(var(--card))] border border-[hsl(var(--border))] shadow-lg"
-        data-testid="button-open-utility-sidebar"
-      >
-        <PanelRightOpen className="w-5 h-5" />
-      </Button>
-    );
+    return null;
   }
 
   return (

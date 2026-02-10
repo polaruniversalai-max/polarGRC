@@ -1,0 +1,73 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+
+# ===========================================
+# SENTINEL VAULT - PROPRIETARY CODE EXCLUSION
+# ===========================================
+# CRITICAL: This folder contains trade secrets and proprietary algorithms.
+# It must NEVER be pushed to the public repository (polarGRC).
+# Only push to sentinel-core-private remote.
+
+# Keep the README for public reference
+!sentinel-vault/README.md
+
+# Temporary build files
+.temp-entry.ts
+.temp-bundle.js
+
+# ===========================================
+# ENVIRONMENT & SECRETS PROTECTION
+# ===========================================
+# CRITICAL: Never commit these files to ANY repository
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+# IDE and editor secrets
+.idea/
+.vscode/settings.json
+*.code-workspace
+
+# ===========================================
+# BUILD & INTERNAL ARTIFACTS
+# ===========================================
+# Internal documentation not for public
+internal-docs/
+private-keys/
+.secrets/
+
+# Logs that may contain sensitive data
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage and test artifacts
+coverage/
+.nyc_output/
+
+# Sanitization reports (generated during sync)
+.sanitization-report.json
+
+# ===========================================
+# REPLIT SPECIFIC
+# ===========================================
+# Replit config may contain internal settings
+.replit.backup
+replit.lock
