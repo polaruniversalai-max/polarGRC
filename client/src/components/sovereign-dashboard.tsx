@@ -24,6 +24,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { ShaktiTracker } from "./shakti-tracker";
 import { SovereignNodeStatus } from "./sovereign-node-status";
 import { MiroComplianceFlow } from "./miro-compliance-flow";
+import { NetworkVitalsWidget } from "./network-vitals-widget";
 
 type AuditLifecycle = "STANDBY" | "PROCESSING" | "RISK_ASSESSMENT" | "COMPLETE" | "ERROR";
 
@@ -488,7 +489,8 @@ export function SovereignDashboard() {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <NetworkVitalsWidget />
         <ShaktiTracker />
         <MiroComplianceFlow 
           auditStatus={state.lifecycle}
