@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Pill, Archive, Shield, Building2, Wallet, BarChart3, Bell, LogOut, User, Settings, Coins, Trophy, Brain, Microscope, ChevronDown } from "lucide-react";
+import { Pill, Archive, Shield, Building2, Wallet, BarChart3, Bell, LogOut, User, Settings, Coins, Trophy, Brain, Microscope, ChevronDown, Globe, Wrench, BookOpen } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -48,6 +48,12 @@ const coreMenuItems = [
     icon: BarChart3,
   },
   {
+    title: "Network & OWASP",
+    url: "/network",
+    icon: Globe,
+    badge: "LIVE",
+  },
+  {
     title: "Alerts",
     url: "/alerts",
     icon: Bell,
@@ -83,6 +89,16 @@ const systemMenuItems = [
     title: "Organization",
     url: "/organization",
     icon: Building2,
+  },
+  {
+    title: "Documentation",
+    url: "/docs",
+    icon: BookOpen,
+  },
+  {
+    title: "Settings",
+    url: "/settings",
+    icon: Wrench,
   },
   {
     title: "Admin",

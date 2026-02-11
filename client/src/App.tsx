@@ -27,6 +27,9 @@ import TreasuryPage from "@/pages/treasury";
 import LeaderboardPage from "@/pages/leaderboard-page";
 import SentinelPage from "@/pages/sentinel";
 import ClinicalAnalysisPage from "@/pages/clinical-analysis";
+import NetworkPage from "@/pages/network";
+import SettingsPage from "@/pages/settings";
+import DocumentationPage from "@/pages/documentation";
 
 function AuthenticatedRouter() {
   return (
@@ -44,6 +47,9 @@ function AuthenticatedRouter() {
       <Route path="/admin" component={AdminPage} />
       <Route path="/sentinel" component={SentinelPage} />
       <Route path="/clinical" component={ClinicalAnalysisPage} />
+      <Route path="/network" component={NetworkPage} />
+      <Route path="/settings" component={SettingsPage} />
+      <Route path="/docs" component={DocumentationPage} />
       <Route component={NotFound} />
     </Switch>
   );
