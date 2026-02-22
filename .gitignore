@@ -1,0 +1,135 @@
+node_modules
+dist
+.DS_Store
+server/public
+vite.config.ts.*
+*.tar.gz
+
+# ===========================================
+# ENVIRONMENT & SECRETS PROTECTION
+# ===========================================
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*.local
+
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+
+.idea/
+.vscode/settings.json
+*.code-workspace
+
+# ===========================================
+# BUILD & INTERNAL ARTIFACTS
+# ===========================================
+internal-docs/
+private-keys/
+.secrets/
+
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+coverage/
+.nyc_output/
+.sanitization-report.json
+
+# ===========================================
+# REPLIT SPECIFIC
+# ===========================================
+.replit.backup
+replit.lock
+.temp-entry.ts
+.temp-bundle.js
+
+# ===========================================
+# PUBLIC REPO SAFETY NET (last line of defense)
+# ===========================================
+# The sync script uses a WHITELIST-ONLY approach:
+# only explicitly approved files go to public.
+# These .gitignore rules are a backup safety net
+# in case of accidental direct git pushes.
+#
+# The private repo sync IGNORES .gitignore and
+# uses its own file walker.
+# ===========================================
+
+# --- ENTIRE BACKEND (all server code is IP) ---
+server/
+
+# --- ENTIRE SHARED LAYER ---
+shared/
+
+# --- SMART CONTRACTS & SECURITY ---
+sentinel-vault/
+contracts/
+Audit_Candidate.sol
+.aptos/
+**/config.yaml
+
+# --- ALL SCRIPTS ---
+scripts/
+script/
+
+# --- ALL PROPRIETARY DIRECTORIES ---
+services/
+config/
+core/
+enterprise_core/
+modules/
+interface/
+mobile/
+public-orchestrator/
+docs/
+
+# --- SENSITIVE FRONTEND PAGES ---
+client/src/pages/dashboard.tsx
+client/src/pages/admin.tsx
+client/src/pages/treasury.tsx
+client/src/pages/pharma-dashboard.tsx
+client/src/pages/wallet.tsx
+client/src/pages/sentinel.tsx
+client/src/pages/account.tsx
+client/src/pages/alert-center.tsx
+client/src/pages/clinical-analysis.tsx
+client/src/pages/network.tsx
+client/src/pages/organization-settings.tsx
+client/src/pages/settings.tsx
+client/src/pages/roi-analytics.tsx
+client/src/pages/leaderboard-page.tsx
+
+# --- WEB3 DEPLOYMENT UI ---
+client/src/hooks/use-web3-deployment.ts
+client/src/components/ui/deployment-modal.tsx
+
+# --- DEPLOYMENT & BUILD ---
+hardhat.config.cjs
+deployments.json
+drizzle.config.ts
+sentinel-core.bundle.js
+solana-mobile-manifest.json
+*.apk
+
+# --- PYTHON SERVICES ---
+agent_middleware.py
+main.py
+pyproject.toml
+uv.lock
+
+# --- SENSITIVE DOCS ---
+GRANT_APPLICATION.md
+SUBMISSION_READY.md
+replit.md
+
+# --- SHELL SCRIPTS ---
+sync-all.sh
+test-compliance.sh

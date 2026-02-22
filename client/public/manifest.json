@@ -1,0 +1,72 @@
+{
+  "id": "com.polaruniversal.app",
+  "name": "PolarUniversal Global Compliance OS",
+  "short_name": "PolarGRC",
+  "description": "AI-powered Governance, Risk, and Compliance platform with multi-chain blockchain verification. 5-Sector coverage: Healthcare, AI Agents, DePIN, Payments, and Privacy.",
+  "version": "3.1.0",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#0A0A0F",
+  "background_color": "#0A0A0F",
+  "categories": ["finance", "business", "productivity", "security"],
+  "icons": [
+    {
+      "src": "/icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "GRC Dashboard"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "id": "com.polaruniversal.app"
+    },
+    {
+      "platform": "itunes",
+      "id": "com.polaruniversal.app"
+    }
+  ],
+  "prefer_related_applications": false
+}
